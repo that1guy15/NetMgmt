@@ -18,6 +18,7 @@
         - libjpeg62-dev
         - libfreetype6
         - libfreetype6-dev
+        - libxslt-dev
         - zlib1g-dev
         - mysql-client
         - python-dev

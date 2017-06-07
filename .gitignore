@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+results/
+venv/
+**/*.pyc
+library/ntc-ansible/
+.idea
+.git

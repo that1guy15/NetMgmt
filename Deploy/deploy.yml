@@ -5,8 +5,9 @@
   sudo: True
 
   vars:
-    app_name: netmgmt_flask
-    repo_url: https://github.com/that1guy15/ansible-flask-demo.git
+    app_name: netmgmt
+    repo_url: https://github.com/that1guy15/NetMgmt.git
+    ntc_ansible_url: https://github.com/networktocode/ntc-ansible
     repo_remote: origin
     repo_version: master
     webapps_dir: /srv/netmgmt
@@ -22,6 +23,15 @@
 
     - name: install dependencies into virtualenv
       action: pip requirements={{webapps_dir}}/{{app_name}}/src/requirements.txt virtualenv={{webapps_dir}}/{{app_name}}/venv state=present
+
+    - name: create ansible library folder
+      action: file {{webapps_dir}}/library state=directory owner=root
+
+    - name: download ntc-ansible to library
+      action: git repo={{ntc_ansible_url}} dest={{webapps_dir}}/{{app_name}}/library remote={{repo_remote}} version={{repo_version}} recursive=yes
+
+    - name: install ntc-ansible
+      script: {{webapps_dir}}/{{app_name}}/library/setup.py install
 
     - name: create supervisor program config
       action: template src=templates/supervisor.ini dest=/etc/supervisor/{{app_name}}.ini
