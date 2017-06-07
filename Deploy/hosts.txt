@@ -1,7 +1,7 @@
 [webservers]
-10.0.0.244
+192.168.100.101
 
 [all:vars]
 ansible_connection=ssh 
-ansible_ssh_user=<user>
-ansible_ssh_pass=<password>
+ansible_ssh_user=vagrant
+ansible_ssh_pass=vagrant
