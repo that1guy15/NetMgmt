@@ -32,7 +32,7 @@
       action: git repo={{ntc_ansible_url}} dest={{webapps_dir}}/{{app_name}}/library remote={{repo_remote}} version={{repo_version}} recursive=yes
 
     - name: install ntc-ansible
-      script: {{webapps_dir}}/{{app_name}}/library/setup.py install virtualenv={{webapps_dir}}/{{app_name}}/venv
+      command: python {{webapps_dir}}/{{app_name}}/library/setup.py install virtualenv={{webapps_dir}}/{{app_name}}/venv
 
     - name: download napalm to library
       action: git repo={{napalm_url}} dest={{webapps_dir}}/{{app_name}}/library remote={{repo_remote}} version={{repo_version}}
