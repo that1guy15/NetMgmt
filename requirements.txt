@@ -10,6 +10,4 @@ Flask-Session
 ansible
 terminal
 pyntc
-request
-napalm
 netmiko
