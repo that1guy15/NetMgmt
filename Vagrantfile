@@ -15,15 +15,15 @@ Vagrant.configure("2") do |config|
   
   end
   
-  config.vm.define "NetMgmt1" do |NetMgmt1|
-    NetMgmt1.vm.box = "ubuntu/trusty64"
-    NetMgmt1.vm.hostname = "NetMgmt"
-    NetMgmt1.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.define "netmgmt1" do |netmgmt1|
+    netmgmt1.vm.box = "ubuntu/trusty64"
+    netmgmt1.vm.hostname = "NetMgmt"
+    netmgmt1.vm.network "forwarded_port", guest: 80, host: 8080
 
-    NetMgmt1.vm.network "private_network", ip: "192.168.100.101",
+    netmgmt1.vm.network "private_network", ip: "192.168.100.101",
       virtualbox__intnet: "internal"
   
-    NetMgmt1.vm.provider "virtualbox" do |vb|
+    netmgmt1.vm.provider "virtualbox" do |vb|
        vb.memory = "512"
     end
   end
