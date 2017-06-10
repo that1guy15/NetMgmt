@@ -15,15 +15,15 @@ Vagrant.configure("2") do |config|
   
   end
   
-  config.vm.define "webSrv1" do |webSrv1|
-    webSrv1.vm.box = "ubuntu/trusty64"
-    webSrv1.vm.hostname = "webSrv1"
-    webSrv1.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.define "NetMgmt1" do |NetMgmt1|
+    NetMgmt1.vm.box = "ubuntu/trusty64"
+    NetMgmt1.vm.hostname = "NetMgmt"
+    NetMgmt1.vm.network "forwarded_port", guest: 80, host: 8080
 
-    webSrv1.vm.network "private_network", ip: "192.168.100.101",
+    NetMgmt1.vm.network "private_network", ip: "192.168.100.101",
       virtualbox__intnet: "internal"
   
-    webSrv1.vm.provider "virtualbox" do |vb|
+    NetMgmt1.vm.provider "virtualbox" do |vb|
        vb.memory = "512"
     end
   end
