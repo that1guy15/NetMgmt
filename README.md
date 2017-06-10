@@ -1,10 +1,12 @@
 # NetMgmt
-Network automation and config management tool
+Network automation and config management tool  
+  
 Main goals of this project will be:
 1) build and push full config of Leaf/spine fabric
 2) build, validate and push changes
 2) build repository for all configs 
 3) diff tool to show changes
+  
 and maybe other stuff as I move along.
 
 # Vagrant servers  
