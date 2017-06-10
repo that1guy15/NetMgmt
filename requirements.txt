@@ -7,9 +7,9 @@ flask-admin==1.5.0
 babel==2.4
 flask-babel==0.11.2
 Flask-Session==0.3.1
-netmiko==1.4.1
 ansible==2.3.1
 terminal==0.4.0
 pyntc==0.0.5
 request
-napalm==1.2.0
+napalm
+netmiko
