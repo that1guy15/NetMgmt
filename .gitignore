@@ -1,7 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
 results/
 venv/
+inventory/
+library/
 **/*.pyc
-library/ntc-ansible/
 .idea
 .git

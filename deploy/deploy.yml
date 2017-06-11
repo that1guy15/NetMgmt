@@ -36,6 +36,9 @@
     - name: download napalm to library
       action: git repo={{napalm_url}} dest={{library_dir}}/napalm remote={{repo_remote}} version={{repo_version}}
 
+    - name: create inventory directory
+      action: file dest={{webapps_dir}}/{{app_name}}/inventory state=directory
+
     - name: create log directory
       action: file dest={{webapps_dir}}/{{app_name}}/log state=directory
 
