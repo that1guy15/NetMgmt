@@ -68,7 +68,7 @@
     - name: cleanup deploy files
       file:
         state: absent
-        path: {{webapps_dir}}/{{app_name}}/deploy
+        path: "{{webapps_dir}}/{{app_name}}/deploy"
 
   handlers:
     - name: restart app
