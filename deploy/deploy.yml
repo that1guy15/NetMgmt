@@ -63,7 +63,7 @@
         state: restarted
 
     - name: start app
-      action: supervisorctl name={{app_name}} state=started
+      action: supervisorctl name={{app_name}} state=restarted
 
     - name: cleanup deploy files
       file:
