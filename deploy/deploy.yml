@@ -26,7 +26,7 @@
       action: pip requirements={{webapps_dir}}/{{app_name}}/src/requirements.txt virtualenv={{webapps_dir}}/{{app_name}}/venv state=present
 
     - name: create ansible library folder
-      action: file {{webapps_dir}}/library state=directory owner=root
+      action: file {{webapps_dir}}/{{app_name}}/library state=directory owner=root
 
     - name: download ntc-ansible to library
       action: git repo={{ntc_ansible_url}} dest={{webapps_dir}}/{{app_name}}/library remote={{repo_remote}} version={{repo_version}} recursive=yes
