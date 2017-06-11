@@ -11,6 +11,7 @@
     - name: install common packages needed for python application development
       action: apt pkg={{item}} state=installed
       with_items:
+        - build-essential
         - libpq-dev
         - libmysqlclient-dev
         - libxml2-dev
@@ -19,6 +20,8 @@
         - libfreetype6
         - libfreetype6-dev
         - libxslt-dev
+        - libffi
+        - libffi-dev
         - zlib1g-dev
         - mysql-client
         - python-dev
@@ -28,6 +31,7 @@
         - python-psycopg2
         - git-core
         - nginx
+        - napalm
 
     - name: install pip
       action: easy_install name=pip
