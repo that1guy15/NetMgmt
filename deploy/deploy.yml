@@ -25,7 +25,7 @@
       action: git repo={{repo_url}} dest={{webapps_dir}}/{{app_name}} remote={{repo_remote}} version={{repo_version}}
 
     - name: install dependencies into virtualenv
-      action: pip requirements={{webapps_dir}}/{{app_name}}/src/requirements.txt virtualenv={{webapps_dir}}/{{app_name}}/venv state=present
+      action: pip requirements={{webapps_dir}}/{{app_name}}/requirements.txt virtualenv={{webapps_dir}}/{{app_name}}/venv state=present
 
     - name: create ansible library folder
       action: file dest={{library_dir}} state=directory owner=root
@@ -64,6 +64,11 @@
 
     - name: start app
       action: supervisorctl name={{app_name}} state=started
+
+    - name: cleanup deploy files
+      file:
+        state: absent
+        path: {{webapps_dir}}/{{app_name}}/deploy
 
   handlers:
     - name: restart app
