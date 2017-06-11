@@ -1,0 +1,9 @@
+{{network}}-{{role}}
+{% for device in devices %}
+ {{ device.name }} role={{ device.role }}
+{% endfor %}
+
+[{{network}}:children]
+{% for role in roles %}
+  {{network}}-{{role}}
+

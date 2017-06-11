@@ -1,0 +1,31 @@
+---
+
+- hosts: localhost
+  user: that1guy15
+  sudo: True
+
+  vars:
+    app_name: netmgmt
+    inventory_dir: /srv/{{app_name}}/inventory
+
+
+  vars_prompt:
+    - name: "device_name"
+      prompt: "Device Name?"
+    - name: "role"
+      prompt: "Device Role"
+    - name: "Network"
+      prompt: "Device Network"
+    - name: "username"
+      prompt: "Login Name"
+    - name: "password"
+      prompt: "Login Password"
+      private: yes
+      encrypt: "sha512_crypt"
+      confirm: yes
+      salt_size: 7
+
+
+  tasks:
+    - name: create device folder and files
+      action: file dest={{inventory_dir}}/{{device_name}} state=directory owner=root
