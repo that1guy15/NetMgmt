@@ -70,6 +70,3 @@
 
     - name: start supervisord service and have it run during system startup
       action: service name=supervisord state=started enabled=yes
-
-    - name: create webapps directory
-      action: file dest=/srv/netmgmt state=directory
