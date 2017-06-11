@@ -12,6 +12,7 @@
     repo_remote: origin
     repo_version: master
     webapps_dir: /srv
+    virt_dir: {{webapps_dir}}/{{app_name}}/venv/bin
     wsgi_file: wsgi.py
     wsgi_callable: app
 
@@ -26,13 +27,13 @@
       action: pip requirements={{webapps_dir}}/{{app_name}}/src/requirements.txt virtualenv={{webapps_dir}}/{{app_name}}/venv state=present
 
     - name: create ansible library folder
-      action: file {{webapps_dir}}/{{app_name}}/library state=directory owner=root
+      action: file dest={{webapps_dir}}/{{app_name}}/library state=directory owner=root
 
     - name: download ntc-ansible to library
-      action: git repo={{ntc_ansible_url}} dest={{webapps_dir}}/{{app_name}}/library remote={{repo_remote}} version={{repo_version}} recursive=yes
+      action: git repo={{ntc_ansible_url}} dest={{webapps_dir}}/{{app_name}}/library/ remote={{repo_remote}} version={{repo_version}} recursive=yes
 
     - name: install ntc-ansible
-      command: python {{webapps_dir}}/{{app_name}}/library/setup.py install virtualenv={{webapps_dir}}/{{app_name}}/venv
+      command: "{{virt_dir}}/python {{webapps_dir}}/{{app_name}}/ntc-ansible/library/setup.py install"
 
     - name: download napalm to library
       action: git repo={{napalm_url}} dest={{webapps_dir}}/{{app_name}}/library remote={{repo_remote}} version={{repo_version}}
