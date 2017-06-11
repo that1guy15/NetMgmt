@@ -12,7 +12,8 @@
     repo_remote: origin
     repo_version: master
     webapps_dir: /srv
-    virt_dir: {{webapps_dir}}/{{app_name}}/venv/bin
+    virt_dir: "{{webapps_dir}}/{{app_name}}/venv/bin"
+    library_dir: "{{webapps_dir}}/{{app_name}}/library"
     wsgi_file: wsgi.py
     wsgi_callable: app
 
@@ -27,16 +28,16 @@
       action: pip requirements={{webapps_dir}}/{{app_name}}/src/requirements.txt virtualenv={{webapps_dir}}/{{app_name}}/venv state=present
 
     - name: create ansible library folder
-      action: file dest={{webapps_dir}}/{{app_name}}/library state=directory owner=root
+      action: file dest={{library_dir}} state=directory owner=root
 
     - name: download ntc-ansible to library
-      action: git repo={{ntc_ansible_url}} dest={{webapps_dir}}/{{app_name}}/library/ remote={{repo_remote}} version={{repo_version}} recursive=yes
+      action: git repo={{ntc_ansible_url}} dest={{library_dir}}/ntc-ansible remote={{repo_remote}} version={{repo_version}} recursive=yes
 
     - name: install ntc-ansible
-      command: "{{virt_dir}}/python {{webapps_dir}}/{{app_name}}/ntc-ansible/library/setup.py install"
+      command: "{{virt_dir}}/python {{library_dir}}/ntc-ansible/setup.py install"
 
     - name: download napalm to library
-      action: git repo={{napalm_url}} dest={{webapps_dir}}/{{app_name}}/library remote={{repo_remote}} version={{repo_version}}
+      action: git repo={{napalm_url}} dest={{library_dir}}/napalm remote={{repo_remote}} version={{repo_version}}
 
     - name: create supervisor program config
       action: template src=templates/supervisor.ini dest=/etc/supervisor/{{app_name}}.ini
