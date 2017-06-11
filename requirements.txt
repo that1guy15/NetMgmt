@@ -11,3 +11,4 @@ ansible
 terminal
 pyntc
 netmiko
+napalm

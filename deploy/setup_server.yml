@@ -20,7 +20,6 @@
         - libfreetype6
         - libfreetype6-dev
         - libxslt-dev
-        - libffi
         - libffi-dev
         - zlib1g-dev
         - mysql-client
@@ -31,7 +30,6 @@
         - python-psycopg2
         - git-core
         - nginx
-        - napalm
 
     - name: install pip
       action: easy_install name=pip
