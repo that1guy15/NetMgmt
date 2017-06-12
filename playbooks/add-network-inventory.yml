@@ -1,0 +1,36 @@
+---
+
+- hosts: localhost
+  user: that1guy15
+  sudo: True
+
+  vars:
+    app_name: netmgmt
+    inventory_dir: /srv/{{app_name}}/inventory
+    playbook_dir: /srv/{{app_name}}/playbooks
+    templates_dir: {{playbook_dir}}/templates
+    device_name: {{device_name}}
+    device_ip: {{device_ip}}
+    device_role: {{device_role}}
+    device_network: {{device_network}}
+    username: {{username}}
+    password: {{password}}
+
+
+  tasks:
+    - name: create device folder
+      action: file dest={{inventory_dir}}/{{device_name}} state=directory owner=root
+
+    - name: create device detail file
+      template:
+        src=templates/device_detail.j2
+        dest={{inventory_dir}}/{{device_name}}/{{device_name}}.yaml
+
+    - name: Update ansible inventory file
+      blockfile:
+        path: {{}}templates_dir}}/hosts
+        insertafter: "{{device_network}}-{{device_role}}"
+        backup: yes
+        content: |
+          {{device_name}} ansible_host={{device_ip}} role={{device_role}} network={{device_network}}
+
