@@ -6,6 +6,7 @@
 
   vars:
     device_name: "{{device_name}}"
+    mgmt_ip: "{{mgmt_ip}}"
     device_ip: "{{device_ip}}"
     device_role: "{{device_role}}"
     device_network: "{{device_network}}"

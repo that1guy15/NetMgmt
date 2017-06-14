@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h2>Add New Device</h2>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  <form action="{{ url_for('newdevice') }}" method=post>
+    {{ form.hidden_tag() }}
+
+    {{ form.device.label }}
+    {{ form.device }}
+
+    {{ form.mgmt_ip.label }}
+    {{ form.mgmt_ip }}
+
+    {{ form.role.label }}
+    {{ form.role }}
+
+    {{ form.network.label }}
+    {{ form.network }}
+
+    {{ form.username.label }}
+    {{ form.username }}
+
+    {{ form.password.label }}
+    {{ form.password }}
+
+    {{ form.submit }}
+  </form>
+
+{% endblock %}
