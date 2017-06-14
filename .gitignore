@@ -3,6 +3,7 @@ results/
 venv/
 inventory/
 library/
+.vagrant/
 **/*.pyc
 .idea
 .git
