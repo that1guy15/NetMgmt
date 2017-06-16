@@ -13,6 +13,7 @@ from ansible import utils
 
 
 app = Flask(__name__)
+app.secret_key = 'password'
 playbook_path = 'playbooks/'
 newdevice_playbook = 'add-network-inventory.yml'
 
