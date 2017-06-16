@@ -1,6 +1,8 @@
 [webservers]
 192.168.100.101
 
+[test123]
+
 [all:vars]
 ansible_connection=ssh 
 ansible_ssh_user=vagrant
