@@ -41,7 +41,7 @@ def newdevice():
             username = device_form.username.data
             password = device_form.password.data
             extra_vars = '--extra-vars "device_name=' + device + ' mgmt_ip=' + mgmt_ip + ' role=' + role + ' network=' + network + ' username=' + username + ' password=' + password + '"'
-            output = subprocess.check_output([('ansible-playbook ' + playbook_path + newdevice_playbook), extra_vars])
+            output = subprocess.check_output(['ansible', '--version'])
         return render_template('results.html', output=output)
 
     elif request.method == 'GET':
