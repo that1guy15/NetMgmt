@@ -124,34 +124,3 @@ class Runner(object):
         stats = self.pbex._tqm._stats
 
         return stats
-
-
-def main():
-    runner = Runner(
-        playbook=src_playbook,
-        hosts=src_hosts,
-        limit_to=src_limit,  #all, none, Group Name, IP address or resolvable hostname. Must be in hosts file
-        display=display,
-        options={
-            'subset': 'all',
-            # 'become': True,
-            # 'become_method': 'sudo',
-            # 'become_user': 'root',
-            # 'private_key_file': '/path/to/the/id_rsa',
-            # 'tags': 'debug',
-            # 'skip_tags': 'debug',
-            'verbosity': 0,
-        },
-        # passwords={
-        #     'become_pass': 'sudo_password',
-        #     'conn_pass': 'ssh_password',
-        # },
-        # vault_pass='vault_password',
-    )
-
-    stats = runner.run()
-
-    # Maybe do something with stats here? If you want!
-
-if __name__ == '__main__':
-    main()
