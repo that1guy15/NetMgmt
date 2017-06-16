@@ -1,6 +1,6 @@
 from os import listdir
 from os.path import isfile, join
-from FlaskForm import Form
+from flask_wtf import Form
 from wtforms import TextField, SelectField, TextAreaField, SubmitField, BooleanField, validators, ValidationError
 from wtforms.validators import Required
 
