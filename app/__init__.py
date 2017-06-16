@@ -25,7 +25,7 @@ def home():
 def inventory():
   return render_template('home.html')
 
-@app.route('/newdevice')
+@app.route('/newdevice', methods=['GET', 'POST'])
 def newdevice():
     device_form = NewDevice()
 
