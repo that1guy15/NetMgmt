@@ -45,7 +45,7 @@ def newdevice():
         return render_template('results.html', output=output)
 
     elif request.method == 'GET':
-        return render_template('results.html', form=device_form)
+        return render_template('newdevice.html', form=device_form)
 
 if __name__ == '__main__':
   app.run(debug=True)
