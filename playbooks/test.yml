@@ -1,0 +1,13 @@
+---
+
+- hosts: 127.0.0.1
+  user: that1guy15
+  sudo: True
+  gather_facts: no
+
+  vars:
+    device_name: "{{device_name}}"
+
+  tasks:
+  - name: ping all hosts
+    ping:
