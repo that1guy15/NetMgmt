@@ -8,9 +8,11 @@ from flask import Flask, render_template
 from flask import Flask, render_template, request, flash, jsonify
 from forms import NewDevice
 from netmiko import ConnectHandler
-import ansible.playbook
-from ansible import utils
+from run_ansible import Runner
+from ansible.utils.display import Display
 
+# TODO No clue why display will not import in with the run_ansible module
+display = Display()
 
 app = Flask(__name__)
 app.secret_key = 'password'

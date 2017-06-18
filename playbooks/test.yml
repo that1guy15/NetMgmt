@@ -1,8 +1,8 @@
 ---
 
-- hosts: 127.0.0.1
-  user: that1guy15
-  sudo: True
+- hosts: hosts
+  user: vagrant
+  sudo: False
   gather_facts: no
 
   vars:
@@ -11,3 +11,5 @@
   tasks:
   - name: ping all hosts
     ping:
+
+  - debug: var=device_name
