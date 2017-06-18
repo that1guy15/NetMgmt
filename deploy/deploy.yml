@@ -24,8 +24,10 @@
     - name: install dependencies into virtualenv
       action: pip requirements={{webapps_dir}}/{{app_name}}/requirements.txt virtualenv={{webapps_dir}}/{{app_name}}/venv state=present
 
-    - name: create ansible library folder
-      action: file dest={{library_dir}} state=directory owner=root
+    - name: create library, playbook and inventory directories
+      action: file dest={{library_dir}} state=directory owner=root group-root mode-0766
+      action: file dest={{webapps_dir}}/playbooks state=directory owner=root group=root mode-0766
+      action: file dest={{webapps_dir}}/inventory state=directory owner=root group=root mode-0766
 
     - name: download ntc-ansible to library
       action: git repo={{ntc_ansible_url}} dest={{library_dir}}/ntc-ansible remote={{repo_remote}} version={{repo_version}} recursive=yes
