@@ -3,10 +3,10 @@
 echo "Provisioning virtual machine..."
 
 echo "Installing Needed stuffs"
-    yum install -y git > /dev/null
-    yum install -y vim > /dev/null
-    yum install -y epel-release > /dev/null
+    sudo add-apt-repository ppa:git-core/ppa  > /dev/null
+    sudo apt-get update  > /dev/null
+    sudo apt-get install git  > /dev/null
 
 echo "Installing Ansible"
-	yum install -y ansible > /dev/null
+	sudo apt-get install ansible > /dev/null
 	
