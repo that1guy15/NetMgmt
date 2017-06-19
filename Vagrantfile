@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
        vb.memory = "512"
     end
 
-    ansible1.vm.provision "shell",
+    netmgmt1.vm.provision "shell",
       path: "netmgmt-base.sh"
   end
 end
