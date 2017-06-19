@@ -8,6 +8,5 @@ echo "INSTALL GIT"
     sudo apt-get install git  > /dev/null
 
 echo "INSTALL ANSIBLE"
-    echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main" >> /etc/apt/sources.list
 	sudo apt-get install ansible > /dev/null
 	
