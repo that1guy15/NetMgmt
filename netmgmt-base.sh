@@ -2,11 +2,12 @@
 
 echo "Provisioning virtual machine..."
 
-echo "Installing Needed stuffs"
+echo "INSTALL GIT"
     sudo add-apt-repository ppa:git-core/ppa  > /dev/null
     sudo apt-get update  > /dev/null
     sudo apt-get install git  > /dev/null
 
-echo "Installing Ansible"
+echo "INSTALL ANSIBLE"
+    echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main" >> /etc/apt/sources.list
 	sudo apt-get install ansible > /dev/null
 	
