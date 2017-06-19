@@ -1,9 +1,10 @@
 # Created by .ignore support plugin (hsz.mobi)
-results/
 venv/
 inventory/
-library/
+/library/ntc-ansible/
+/library/napalm/
 **/*.pyc
 .idea
 .git
 /.vagrant/
+

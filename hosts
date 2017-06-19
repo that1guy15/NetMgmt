@@ -1,5 +1,5 @@
 [webservers]
-192.168.100.101
+localhost
 
 [all:vars]
 ansible_connection=ssh 

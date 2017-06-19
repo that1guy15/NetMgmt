@@ -1,6 +1,6 @@
 ---
 
-- hosts: webservers
+- hosts: localhost
   user: that1guy15
   sudo: True
 

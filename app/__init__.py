@@ -1,18 +1,10 @@
 import os
-from os.path import isfile, join
 import sys
-import subprocess
-import threading
-from datetime import datetime
-from flask import Flask, render_template
-from flask import Flask, render_template, request, flash, jsonify
+sys.path.insert(0,'/srv/netmgmt/library')
+from flask import Flask, render_template, request, flash
 from forms import NewDevice
-from netmiko import ConnectHandler
-from run_ansible import Runner
-from ansible.utils.display import Display
+from device_group_mgmt import device_add
 
-# TODO No clue why display will not import in with the run_ansible module
-display = Display()
 
 app = Flask(__name__)
 app.secret_key = 'password'
@@ -36,14 +28,13 @@ def newdevice():
             flash('All fields are required.')
             return render_template('newdevice.html', form=device_form)
         else:
-            device = device_form.device.data
+            device_name = device_form.device.data
             mgmt_ip = device_form.mgmt_ip.data
             role = device_form.role.data
             network = device_form.network.data
             username = device_form.username.data
             password = device_form.password.data
-            extra_vars = '--extra-vars "device_name=' + device + ' mgmt_ip=' + mgmt_ip + ' role=' + role + ' network=' + network + ' username=' + username + ' password=' + password + '"'
-            output = subprocess.check_output([('ansible-playbook ' + playbook_path + newdevice_playbook), extra_vars])
+            output = device_add(device_name, mgmt_ip, role, network, username, password)
         return render_template('results.html', output=output)
 
     elif request.method == 'GET':
