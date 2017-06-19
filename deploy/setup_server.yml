@@ -39,6 +39,7 @@
       action: pip name={{item}} state=present
       with_items:
         - virtualenv
+        - virtualenvwrapper
         - supervisor
         - uwsgi
 
