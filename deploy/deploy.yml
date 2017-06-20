@@ -25,10 +25,10 @@
         state: present
 
     - name: create playbook directory
-      action: file dest={{webapps_dir}}/playbooks state=directory
+      action: file dest={{webapps_dir}}/{{app_name}}/playbooks state=directory
 
     - name: create inventory directory
-      action: file dest={{webapps_dir}}/inventory state=directory
+      action: file dest={{webapps_dir}}/{{app_name}}/inventory state=directory
 
     - name: download ntc-ansible to library
       action: git repo={{ntc_ansible_url}} dest={{library_dir}}/ntc-ansible remote={{repo_remote}} version={{repo_version}} recursive=yes
