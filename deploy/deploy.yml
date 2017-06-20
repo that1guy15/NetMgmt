@@ -24,8 +24,10 @@
     - name: install dependencies into virtualenv
       action: pip requirements={{webapps_dir}}/{{app_name}}/requirements.txt virtualenv={{webapps_dir}}/{{app_name}}/venv state=present
 
-    - name: create playbook and inventory directories
+    - name: create playbook directories
       action: file dest={{webapps_dir}}/playbooks state=directory owner=root group=root mode-0766
+
+    - name: create inventory directories
       action: file dest={{webapps_dir}}/inventory state=directory owner=root group=root mode-0766
 
     - name: download ntc-ansible to library
