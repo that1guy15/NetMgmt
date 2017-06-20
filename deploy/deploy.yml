@@ -1,7 +1,7 @@
 ---
 
 - hosts: localhost
-  user: that1guy15
+  user: vagrant
   sudo: True
 
   vars:
@@ -18,16 +18,13 @@
     wsgi_callable: app
 
   tasks:
-    - name: deploy code from repository
-      action: git repo={{repo_url}} dest={{webapps_dir}}/{{app_name}} remote={{repo_remote}} version={{repo_version}}
-
     - name: install dependencies into virtualenv
       action: pip requirements={{webapps_dir}}/{{app_name}}/requirements.txt virtualenv={{webapps_dir}}/{{app_name}}/venv state=present
 
-    - name: create playbook directories
+    - name: create playbook directory
       action: file dest={{webapps_dir}}/playbooks state=directory owner=root group=root mode-0766
 
-    - name: create inventory directories
+    - name: create inventory directory
       action: file dest={{webapps_dir}}/inventory state=directory owner=root group=root mode-0766
 
     - name: download ntc-ansible to library
