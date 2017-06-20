@@ -26,8 +26,8 @@
 
     {{ form.submit }}
   </form>
-  {% if error %}
-    <p class="flash"><strong>Error:</strong> {{ error }}
-  {% endif %}
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
 
 {% endblock %}
