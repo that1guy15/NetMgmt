@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
     netmgmt1.vm.hostname = "NetMgmt"
     netmgmt1.vm.network "forwarded_port", guest: 80, host: 8080
 
-    netmgmt1.vm.network "private_network", ip: "192.168.100.101",
+    netmgmt1.vm.network "private_network", ip: "192.168.100.100",
       virtualbox__intnet: "internal"
 
     netmgmt1.vm.provider "virtualbox" do |vb|
