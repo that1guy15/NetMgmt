@@ -21,7 +21,8 @@
     - name: install dependencies into virtualenv
       pip:
         requirements: "{{webapps_dir}}/{{app_name}}/requirements.txt"
-        virtualenv: "{{webapps_dir}}/{{app_name}}/venv" state=present
+        virtualenv: "{{webapps_dir}}/{{app_name}}/venv"
+        state: present
 
     - name: create playbook directory
       action: file dest={{webapps_dir}}/playbooks state=directory owner=root group=root mode-0766
