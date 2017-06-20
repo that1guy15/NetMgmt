@@ -8,6 +8,9 @@
     - name: add nginx ppa
       action: apt_repository repo=ppa:nginx/stable state=present
 
+    - name: add git ppa
+      action: apt_repository repo=ppa:git-core/ppa state=present
+
     - name: install common packages needed for python application development
       action: apt pkg={{item}} state=installed
       with_items:
