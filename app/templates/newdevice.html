@@ -2,6 +2,9 @@
 
 {% block content %}
   <h2>Add New Device</h2>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
 
   <form action="{{ url_for('newdevice') }}" method=post>
     {{ form.hidden_tag() }}
@@ -26,8 +29,5 @@
 
     {{ form.submit }}
   </form>
-  {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
 
 {% endblock %}
