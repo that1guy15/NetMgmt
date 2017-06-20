@@ -127,6 +127,7 @@ form input#command {
      -moz-border-radius: 3px;
           border-radius: 3px;
   border: 1px solid #cccccc;
+  border-radius: 10px;
   padding: 5px;
   font-size: 1.1em;
 }
@@ -137,6 +138,7 @@ form input#submit {
      -moz-border-radius: 3px;
           border-radius: 3px;
   border:1px solid #d8d8d8;
+  border-radius: 10px;
   padding: 10px; 
   font-weight:bold; 
   text-align: center; 
@@ -166,4 +168,6 @@ form input#submit:hover{
   background-color: #FBB0B0;
   padding: 10px;
   width: 400px;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
 }
