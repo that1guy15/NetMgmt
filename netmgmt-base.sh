@@ -8,7 +8,7 @@ echo "ADD APT-GET REPOS"
     sudo su -
     sudo add-apt-repository ppa:git-core/ppa > /dev/null
     sudo apt-add-repository ppa:ansible/ansible > /dev/null
-    sudo apt-get update
+    sudo apt-get update || True
 
 echo "INSTALL GIT"
     sudo apt-get install git > /dev/null
