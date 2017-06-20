@@ -33,7 +33,6 @@
         - python-psycopg2
         - git-core
         - nginx
-        - yamllint
 
     - name: install pip
       action: easy_install name=pip
