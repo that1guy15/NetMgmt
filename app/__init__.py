@@ -22,6 +22,7 @@ def inventory():
 @app.route('/newdevice', methods=['GET', 'POST'])
 def newdevice():
     device_form = NewDevice()
+    error = None
 
     if request.method == 'POST':
         if device_form.validate() == False:
@@ -35,8 +36,8 @@ def newdevice():
             username = device_form.username.data
             password = device_form.password.data
             output = device_add(device_name, mgmt_ip, role, network, username, password)
-            flash('message')
-        return render_template('newdevice.html', output=message)
+            error = device_name + 'added successfully'
+        return render_template('newdevice.html', error=error)
 
     elif request.method == 'GET':
         return render_template('newdevice.html', form=device_form)
