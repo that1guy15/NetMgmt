@@ -1,7 +1,7 @@
 import os
 import sys
 sys.path.insert(0,'/srv/netmgmt/library')
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, redirect, url_for
 from forms import NewDevice
 from device_group_mgmt import device_add
 
@@ -35,7 +35,7 @@ def newdevice():
             username = device_form.username.data
             password = device_form.password.data
             output = device_add(device_name, mgmt_ip, role, network, username, password)
-        return render_template('results.html', output=output)
+        return render_template('newdevice.html', output=output)
 
     elif request.method == 'GET':
         return render_template('newdevice.html', form=device_form)
