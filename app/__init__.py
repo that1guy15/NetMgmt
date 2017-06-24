@@ -2,6 +2,7 @@ import os
 import sys
 sys.path.insert(0,'/srv/netmgmt/library')
 from flask import Flask, render_template, request, flash, redirect, url_for
+from flask_bootstrap import Bootstrap
 from forms import NewDevice
 from device_group_mgmt import device_add
 

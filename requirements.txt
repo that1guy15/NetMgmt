@@ -4,6 +4,7 @@ Werkzeug
 wsgiref
 flask_wtf
 flask-admin
+flask-bootstrap
 babel
 flask-babel
 Flask-Session

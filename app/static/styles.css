@@ -116,7 +116,8 @@ form label {
   font-size: 1.2em;
   font-weight: bold;
   display: block;
-  padding: 10px 0;
+  padding: 3px 0;
+  padding-top: 14px;
 }
  
 form input#device,
@@ -164,10 +165,34 @@ form input#submit:hover{
   background-image: linear-gradient(top, #dbdbdb, #cccccc);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#dbdbdb, endColorstr=#cccccc);
 }
 /* Message flashing */
-.flash {
-  background-color: #FBB0B0;
+.flasherror {
+  background-color: #c1574d;
   padding: 10px;
   width: 400px;
-  border: 1px solid #cccccc;
+  border: 1px solid #2d2d2d;
+  border-radius: 10px;
+}
+
+.flashsuccess {
+  background-color: #5cc44e;
+  padding: 10px;
+  width: 400px;
+  border: 1px solid #2d2d2d;
+  border-radius: 10px;
+}
+
+.flashinfo {
+  background-color: #4ea4b7;
+  padding: 10px;
+  width: 400px;
+  border: 1px solid #2d2d2d;
+  border-radius: 10px;
+}
+
+.flashwarning {
+  background-color: #ad9448;
+  padding: 10px;
+  width: 400px;
+  border: 1px solid #2d2d2d;
   border-radius: 10px;
 }
