@@ -8,6 +8,7 @@ from device_group_mgmt import device_add
 
 
 app = Flask(__name__)
+Bootstrap(app)
 app.secret_key = 'password'
 playbook_path = 'playbooks/'
 newdevice_playbook = 'add-network-inventory.yml'
@@ -27,7 +28,7 @@ def newdevice():
 
     if request.method == 'POST':
         if device_form.validate() == False:
-            flash('All fields are required.')
+            flash('All fields are required.', 'error')
             return render_template('newdevice.html', form=device_form)
         else:
             device_name = device_form.device.data
@@ -37,8 +38,8 @@ def newdevice():
             username = device_form.username.data
             password = device_form.password.data
             output = device_add(device_name, mgmt_ip, role, network, username, password)
-            error = device_name + ' added successfully'
-        return render_template('newdevice.html', output=output, form=device_form, error=error)
+            flash(device_name + ' added successfully', 'success')
+        return render_template('newdevice.html', form=device_form, output=output, error=error)
 
     elif request.method == 'GET':
         return render_template('newdevice.html', form=device_form)

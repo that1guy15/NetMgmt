@@ -44,9 +44,10 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-  <div class="jumbo">
-       <img src="/static/img/grumpy_cat.jpg" alt="grump_cat.jpg">
-  </div>
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
   </body>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script type = "text/javascript" src = "/static/js/bootstrap.min.js"></script>

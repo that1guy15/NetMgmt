@@ -1,35 +1,17 @@
 {% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
+
 
 {% block content %}
-  <h2>Add New Device</h2>
-  {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
+{{util.flashed_messages(dismissible=True)}}
+<div class="container">
+  <h1>Add New Device</h1>
 
-  <form action="{{ url_for('newdevice') }}" method=post>
-    {{ form.hidden_tag() }}
-
-    {{ form.device.label }}
-    {{ form.device }}
-
-    {{ form.mgmt_ip.label }}
-    {{ form.mgmt_ip }}
-
-    {{ form.role.label }}
-    {{ form.role }}
-
-    {{ form.network.label }}
-    {{ form.network }}
-
-    {{ form.username.label }}
-    {{ form.username }}
-
-    {{ form.password.label }}
-    {{ form.password }}
-
-    {{ form.submit }}
-  </form>
-  {% if error %}
+  {{ wtf.quick_form(form, button_map={'submit_button': 'primary'}) }}
+</div>
+{% if error %}
     <p class=flash:success><strong>Message:</strong> {{ error }}
   {% endif %}
 {% endblock %}
