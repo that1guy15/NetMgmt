@@ -38,7 +38,7 @@ def newdevice():
             username = device_form.username.data
             password = device_form.password.data
             output = device_add(device_name, mgmt_ip, role, network, username, password)
-            flash(device_name + ' added successfully', 'success')
+            flash('Sucess! ' + output, 'success')
         return render_template('newdevice.html', form=device_form, output=output, error=error)
 
     elif request.method == 'GET':
