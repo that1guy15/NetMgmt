@@ -14,3 +14,11 @@ class NewDevice(Form):
     password = TextField("Login Password", [validators.Required()])
     submit = SubmitField("Submit")
 
+
+class NewNetwork(Form):
+    roles = TextField("Device Roles", [validators.Required()])
+    network = TextField("Network", [validators.Required()])
+    username = TextField("Login Username", [validators.Required()])
+    password = TextField("Login Password", [validators.Required()])
+    submit = SubmitField("Submit")
+

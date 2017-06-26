@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
+
+
+{% block content %}
+{{util.flashed_messages(dismissible=True)}}
+<div class="container">
+  <h1>Add New Network</h1>
+
+  {{ wtf.quick_form(form, button_map={'submit_button': 'primary'}) }}
+</div>
+{% if error %}
+    <p class=flash:success><strong>Message:</strong> {{ error }}
+  {% endif %}
+{% endblock %}
