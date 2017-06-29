@@ -1,4 +1,5 @@
 import os
+import os.path
 import sys
 from collections import defaultdict, OrderedDict
 import yaml
@@ -22,11 +23,20 @@ def network_add(network, roles, username, password):
     directory = os.path.dirname(network_dir) + '/'
     roles = roles.split()
 
+    # Check if network exist
+    try:
+        os.path.exists([directory + network_conf])
+    except:
+        raise
+        sys.exit(1)
+        return network + ' already in inventory!'
+
     # Create network directory
     try:
         os.makedirs(directory)
     except OSError:
         if not os.path.isdir(directory):
+            return 'Unable to add ' + network + ': OSError'
             raise
 
     # Build network settings structure
@@ -51,14 +61,23 @@ def network_add(network, roles, username, password):
 # Create New Device in Inventory
 def device_add(device, mgmt_ip, role, network, username, password):
     device_conf = device + '.yaml'
-    device_dir = inv_dir + network + device + '/'
+    device_dir = inv_dir + network + '/' + device + '/'
     directory = os.path.dirname(device_dir) + '/'
+
+    # Check if device exist
+    try:
+        os.path.exists([directory + device_conf])
+    except:
+        raise
+        sys.exit(1)
+        return device + ' already in inventory!'
 
     # Create device directory
     try:
         os.makedirs(directory)
     except OSError:
         if not os.path.isdir(directory):
+            return 'Unable to add ' + device + ': OSError'
             raise
 
     # Build device settings structure
@@ -77,6 +96,6 @@ def device_add(device, mgmt_ip, role, network, username, password):
             yaml.add_representer(OrderedDict, Representer.represent_dict)
             yaml.add_representer(unicode, SafeRepresenter.represent_unicode)
             yaml.dump(target_dict, outfile, default_flow_style=False)
-            return device + ' config added to inventory!'
+            return device + ' config added to inventory!, success'
     except:
         raise
