@@ -45,6 +45,8 @@ def network_add(network, roles, username, password):
     # Build network settings file
     try:
         with open(network_dir + network_conf, 'w') as outfile:
+            outfile.write('---\n')
+            outfile.write('\n')
             yaml.add_representer(defaultdict, Representer.represent_dict)
             yaml.add_representer(OrderedDict, Representer.represent_dict)
             yaml.add_representer(unicode, SafeRepresenter.represent_unicode)
@@ -85,6 +87,8 @@ def device_add(device, mgmt_ip, role, network, username, password):
     # Build device settings file
     try:
         with open(device_dir + device_conf, 'w') as outfile:
+            outfile.write('---\n')
+            outfile.write('\n')
             yaml.add_representer(defaultdict, Representer.represent_dict)
             yaml.add_representer(OrderedDict, Representer.represent_dict)
             yaml.add_representer(unicode, SafeRepresenter.represent_unicode)
