@@ -20,24 +20,20 @@ password = ''
 def network_add(network, roles, username, password):
     network_conf = network + '.yaml'
     network_dir = inv_dir + network + '/'
-    directory = os.path.dirname(network_dir) + '/'
     roles = roles.split()
 
     # Check if network exist
     try:
-        os.path.exists([directory + network_conf])
+        os.path.exists(network_dir + network_conf)
     except:
-        raise
-        sys.exit(1)
         return network + ' already in inventory!'
 
     # Create network directory
     try:
-        os.makedirs(directory)
+        os.makedirs(network_dir)
     except OSError:
-        if not os.path.isdir(directory):
+        if not os.path.isdir(network_dir):
             return 'Unable to add ' + network + ': OSError'
-            raise
 
     # Build network settings structure
     target_dict = defaultdict(dict)
@@ -48,7 +44,7 @@ def network_add(network, roles, username, password):
 
     # Build network settings file
     try:
-        with open(directory + network_conf, 'w') as outfile:
+        with open(network_dir + network_conf, 'w') as outfile:
             yaml.add_representer(defaultdict, Representer.represent_dict)
             yaml.add_representer(OrderedDict, Representer.represent_dict)
             yaml.add_representer(unicode, SafeRepresenter.represent_unicode)
@@ -62,23 +58,20 @@ def network_add(network, roles, username, password):
 def device_add(device, mgmt_ip, role, network, username, password):
     device_conf = device + '.yaml'
     device_dir = inv_dir + network + '/' + device + '/'
-    directory = os.path.dirname(device_dir) + '/'
 
     # Check if device exist
     try:
-        os.path.exists([directory + device_conf])
+        os.path.exists(device_dir + device_conf)
     except:
-        raise
-        sys.exit(1)
         return device + ' already in inventory!'
 
     # Create device directory
     try:
-        os.makedirs(directory)
+        os.makedirs(device_dir)
     except OSError:
-        if not os.path.isdir(directory):
+        if not os.path.isdir(device_dir):
             return 'Unable to add ' + device + ': OSError'
-            raise
+
 
     # Build device settings structure
     target_dict = defaultdict(dict)
@@ -91,7 +84,7 @@ def device_add(device, mgmt_ip, role, network, username, password):
 
     # Build device settings file
     try:
-        with open(directory + device_conf, 'w') as outfile:
+        with open(device_dir + device_conf, 'w') as outfile:
             yaml.add_representer(defaultdict, Representer.represent_dict)
             yaml.add_representer(OrderedDict, Representer.represent_dict)
             yaml.add_representer(unicode, SafeRepresenter.represent_unicode)
