@@ -18,6 +18,7 @@ password = ''
 
 # Create New Network
 def network_add(network, roles, username, password):
+    network_inv = network + '-inventory'
     network_conf = network + '.yaml'
     network_dir = inv_dir + network + '/'
     roles = roles.split()
@@ -31,9 +32,20 @@ def network_add(network, roles, username, password):
     # Create network directory
     try:
         os.makedirs(network_dir)
+
     except OSError:
         if not os.path.isdir(network_dir):
             return 'Unable to add ' + network + ': OSError'
+
+    #Create network inventory file
+    try:
+        with open(network_dir + network_inv, 'w') as invfile:
+            invfile.write('#Network inventory for: ' + network + '\n')
+            for role in roles:
+                invfile.write('[' + role + ']\n\n')
+
+    except:
+        return 'Unable to add ' + network + ' inventory files'
 
     # Build network settings structure
     target_dict = defaultdict(dict)
@@ -54,6 +66,9 @@ def network_add(network, roles, username, password):
             return network + ' network added to inventory!'
     except:
         raise
+
+    # Build network inventory file
+
 
 
 # Create New Device in Inventory
